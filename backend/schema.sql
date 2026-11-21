@@ -1,0 +1,17 @@
+-- Tabela de clientes registrados
+CREATE TABLE IF NOT EXISTS clientes (
+id INTERGER PRIMARY KEY AUTOINCREMENT,
+nome VARCHAR(100) NOT NULL UNIQUE,
+banco VARCHA(50) NOT NULL,
+criando_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de comporvantes Descarregados
+CREATE TABLE IF NOT EXISTS comprovantes
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+cliente_id INTEGER NOT NULL,
+valor DECIMAL(10, 2) NOT NULL,
+data_pagamento DATE NOT NULL,
+status_dowload VARCHAR(20) DEFAULT 'SUCESSO',
+baixado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (cliente_id) REFERENCES clientes(id)
